@@ -1,0 +1,299 @@
++ DEFAULT_PROFILE_HOME=/home/kasm-default-profile
++ PROFILE_SYNC_DIR=/kasm_profile_sync
++ '[' -f /home/kasm-user/.bashrc ']'
++ echo 'Profile Sync Directory Does Not Exist. No Sync will occur'
+Profile Sync Directory Does Not Exist. No Sync will occur
++ copy_default_profile_to_home
++ echo 'Copying default profile to home directory'
+Copying default profile to home directory
++ cp -rp /home/kasm-default-profile/. /home/kasm-user/
++ ls -la /home/kasm-user
+total 36
+drwxrwxrwx  1 kasm-user root      4096 Sep 16 19:30 .
+drwxr-xr-x  1 root      root      4096 Sep  3 16:00 ..
+-rw-rw-rw-  1 kasm-user kasm-user   43 Sep  3 15:56 .bashrc
+drwxrwxrwx 13 kasm-user kasm-user 4096 Sep  3 15:48 .config
+drwxrwxrwx  2 kasm-user kasm-user 4096 Sep 16 19:30 Desktop
+drwxrwxrwx  3 kasm-user kasm-user 4096 Sep  3 15:58 .local
+drwxrwxrwx  3 kasm-user kasm-user 4096 Sep  3 15:56 .pki
+-rw-rw-rw-  1 kasm-user kasm-user  215 Sep 16 19:30 .wget-hsts
++ verify_profile_config
++ echo 'Verifying Uploads/Downloads Configurations'
+Verifying Uploads/Downloads Configurations
++ mkdir -p /home/kasm-user/Uploads
++ '[' -d /home/kasm-user/Desktop/Uploads ']'
++ echo 'Creating Uploads Desktop Symlink'
+Creating Uploads Desktop Symlink
++ ln -sf /home/kasm-user/Uploads /home/kasm-user/Desktop/Uploads
++ mkdir -p /home/kasm-user/Downloads
++ '[' -d /home/kasm-user/Desktop/Downloads ']'
++ echo 'Creating Download Desktop Symlink'
+Creating Download Desktop Symlink
++ ln -sf /home/kasm-user/Downloads /home/kasm-user/Desktop/Downloads
+++ readlink -f /usr/share/kasmvnc/www/Downloads/Downloads
++ [[ /home/kasm-user/Downloads != \/\h\o\m\e\/\k\a\s\m\-\u\s\e\r\/\D\o\w\n\l\o\a\d\s ]]
++ echo 'Downloads RX Symlink Exists'
+Downloads RX Symlink Exists
++ ls -la /home/kasm-user/Desktop
+total 8
+drwxrwxrwx 2 kasm-user kasm-user 4096 Feb 20 13:37 .
+drwxrwxrwx 1 kasm-user root      4096 Feb 20 13:37 ..
+lrwxrwxrwx 1 kasm-user kasm-user   25 Feb 20 13:37 Downloads -> /home/kasm-user/Downloads
+lrwxrwxrwx 1 kasm-user kasm-user   23 Feb 20 13:37 Uploads -> /home/kasm-user/Uploads
++ rm -rf /home/kasm-user/.config/pulse
++ echo -e '\n\n------------------ EXECUTE COMMAND ------------------'
+
+
+------------------ EXECUTE COMMAND ------------------
++ echo 'Executing command: '\''/dockerstartup/vnc_startup.sh' /dockerstartup/kasm_startup.sh '--tail-log'\'''
+Executing command: '/dockerstartup/vnc_startup.sh /dockerstartup/kasm_startup.sh --tail-log'
++ exec /dockerstartup/vnc_startup.sh /dockerstartup/kasm_startup.sh --tail-log
+....+.....+.+.....+.........+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..............+........+..........+.....+.............+.....+....+...+...+.....+.......+...+..............+...+...+....+..+...+.......+...+........+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*......+..+......+....+.........+..+...+....+.....+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+....+...+.+.....+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+....+..............+.+...+......+.....+.......+...+.....+......+...+......+.+...........+............+...+............+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----
+2025-02-20T13:37:02Z DEBUG (vnc_startup.sh): Starting KasmVNC
+Creating default config /home/kasm-user/.vnc/kasmvnc.yaml
+xauth:  file /home/kasm-user/.Xauthority does not exist
+
+New '10b85a981422:1 (kasm-user)' desktop is 10b85a981422:1
+
+Users configured:
+kasm_user (can use keyboard and mouse, add/remove users)
+kasm_viewer (can only view)
+
+Log file is /home/kasm-user/.vnc/10b85a981422:1.log
+
+Starting applications specified in /home/kasm-user/.vnc/xstartup
+
+Paste this url in your browser:
+https://172.17.0.2:6901
+Disabling X Screensaver Functionality
+server does not have extension for -dpms option
+Keyboard Control:
+  auto repeat:  on    key click percent:  0    LED mask:  00000000
+  XKB indicators:
+    00: Caps Lock:   off    01: Num Lock:    off    02: Scroll Lock: off
+    03: Compose:     off    04: Kana:        off    05: Sleep:       off
+    06: Suspend:     off    07: Mute:        off    08: Misc:        off
+    09: Mail:        off    10: Charging:    off    11: Shift Lock:  off
+    12: Group 2:     off    13: Mouse Keys:  off
+  auto repeat delay:  660    repeat rate:  25
+  auto repeating keys:  00ffffffdffffbbf
+                        fadfffefffedffff
+                        9fffffffffffffff
+                        fff7ffffffffffff
+  bell percent:  50    bell pitch:  400    bell duration:  100
+Pointer Control:
+  acceleration:  2/1    threshold:  4
+Screen Saver:
+  prefer blanking:  yes    allow exposures:  yes
+  timeout:  0    cycle:  600
+Colors:
+  default colormap:  0x20    BlackPixel:  0x0    WhitePixel:  0xffffff
+Font Path:
+  /usr/share/fonts/X11//Type1,built-ins
+DPMS (Energy Star):
+  Server does not have the DPMS Extension
+
+------------------ Xfce4 window manager startup------------------
+Skipping XFCE Startup
+
+------------------ Openbox window manager startup------------------
+Skipping OpenBox Startup
+
+------------------ KDE window manager startup------------------
+Starting KDE
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting audio websocket server
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting audio server
+Starting Pulse
+Starting audio service
+
+------------------ Started Audio Out  ----------------------------
+Kasm Audio Out PID: 104
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting audio input server
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting upload server
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting gamepad server
+2025-02-20T13:37:04Z DEBUG (vnc_startup.sh): Starting printer service
+
+
+------------------ KasmVNC environment started ------------------
+2025-02-20T13:37:04Z INFO (vnc_startup.sh): Kasm User () started container id 10b85a981422 with local IP address 172.17.0.2
+ 2025-02-20 13:37:03,870 [DEBUG] Config: set immutable AllowOverride
+ 2025-02-20 13:37:03,870 [INFO] vncext: Listening to unix relay socket printer
+ 2025-02-20 13:37:03,871 [INFO] vncext: Listening for websocket connections on 0.0.0.0 interface(s), port 6901
+ 2025-02-20 13:37:03,871 [DEBUG] VNCServerST: creating single-threaded server 10b85a981422:1 (kasm-user)
+ 2025-02-20 13:37:03,871 [INFO] VNCServerST: CPU capability: SSE2 yes, AVX512f no
+ 2025-02-20 13:37:03,871 [INFO] vncext: created VNC server for screen 0
+ 2025-02-20 13:37:04,257 [INFO] Input: Mouse horizonatl scroll factor: 50.000000
+ 2025-02-20 13:37:04,257 [INFO] Input: Mouse vertical scroll factor: 50.000000
+Running /home/kasm-user/.vnc/xstartup
+ 2025-02-20 13:37:04,365 [DEBUG] WebUdp: UDP listening on port 6901
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+Listening for incomming MPEG-TS Stream on https://127.0.0.1:8081/<secret>
+Awaiting WebSocket connections on wss://127.0.0.1:4901/
+INFO:KasmPrintingService:Watching for PDF documents at /home/kasm-user/PDF
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+ERROR:KasmGamepadServer:Failed to connect input (/dev/input/event0) : [Errno 2] No such file or directory: '/dev/input/event0'
+ERROR:KasmGamepadServer:Failed to connect input (/dev/input/event1) : [Errno 2] No such file or directory: '/dev/input/event1'
+ERROR:KasmGamepadServer:Failed to connect input (/dev/input/event2) : [Errno 2] No such file or directory: '/dev/input/event2'
+ERROR:KasmGamepadServer:Failed to connect input (/dev/input/event3) : [Errno 2] No such file or directory: '/dev/input/event3'
+Failed to unload module: Module module-pipe-source not loaded
+ * Serving Flask app 'kasm_upload_server'
+ * Debug mode: off
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:4902
+ * Running on https://172.17.0.2:4902
+Press CTRL+C to quit
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+start_kdeinit: Operation not permitted
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+Initializing  "/usr/lib/x86_64-linux-gnu/qt5/plugins/plasma/kcms/systemsettings/kcm_style.so"
+Stream Connected: ::ffff:127.0.0.1:36466
+Initializing  "/usr/lib/x86_64-linux-gnu/qt5/plugins/plasma/kcms/systemsettings/kcm_mouse.so"
+Initializing  "/usr/lib/x86_64-linux-gnu/qt5/plugins/plasma/kcms/systemsettings/kcm_fonts.so"
+org.kde.plasma.session: process job  "kcminit_startup" finished with exit code  0
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+kcm_touchpad: Using X11 backend
+Installing the delayed initialization callback.
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+ 2025-02-20 13:37:07,659 [INFO] websocket 0: got client connection from 172.17.0.1
+ 2025-02-20 13:37:07,668 [DEBUG] websocket 0: non-SSL connection disallowed
+ 2025-02-20 13:37:07,668 [DEBUG] websocket 0: No connection after handshake
+ 2025-02-20 13:37:07,668 [DEBUG] websocket 0: handler exit
+ 2025-02-20 13:37:07,682 [INFO] websocket 1: got client connection from 172.17.0.1
+ 2025-02-20 13:37:07,686 [DEBUG] websocket 1: non-SSL connection disallowed
+ 2025-02-20 13:37:07,687 [DEBUG] websocket 1: No connection after handshake
+ 2025-02-20 13:37:07,687 [DEBUG] websocket 1: handler exit
+ 2025-02-20 13:37:07,695 [INFO] websocket 2: got client connection from 172.17.0.1
+ 2025-02-20 13:37:07,703 [DEBUG] websocket 2: non-SSL connection disallowed
+ 2025-02-20 13:37:07,703 [DEBUG] websocket 2: No connection after handshake
+ 2025-02-20 13:37:07,703 [DEBUG] websocket 2: handler exit
+ 2025-02-20 13:37:07,713 [INFO] websocket 3: got client connection from 172.17.0.1
+ 2025-02-20 13:37:07,715 [DEBUG] websocket 3: non-SSL connection disallowed
+ 2025-02-20 13:37:07,715 [DEBUG] websocket 3: No connection after handshake
+ 2025-02-20 13:37:07,715 [DEBUG] websocket 3: handler exit
+QDBusConnection: name 'org.kde.kglobalaccel' had owner '' but we thought it was ':1.6'
+Delayed initialization.
+Reloading the khotkeys configuration
+Version 2 File!
+true
+Imported file "/usr/share/khotkeys/defaults.khotkeys"
+kwin_xkbcommon: XKB: inet:334:58: unrecognized keysym "XF86EmojiPicker"
+Imported file "/usr/share/khotkeys/kde32b1.khotkeys"
+Imported file "/usr/share/khotkeys/konqueror_gestures_kde321.khotkeys"
+QDBusAbstractAdaptor: Cannot relay signal KDEDModule::moduleDeleted(KDEDModule*): Pointers are not supported: KDEDModule*
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+OpenGL vendor string:                   Mesa/X.org
+OpenGL renderer string:                 llvmpipe (LLVM 15.0.6, 256 bits)
+OpenGL version string:                  4.5 (Compatibility Profile) Mesa 22.3.6
+OpenGL shading language version string: 4.50
+Driver:                                 LLVMpipe
+GPU class:                              Unknown
+OpenGL version:                         4.5
+GLSL version:                           4.50
+Mesa version:                           22.3.6
+X server version:                       1.20.10
+Linux kernel version:                   6.5
+Requires strict binding:                yes
+GLSL shaders:                           yes
+Texture NPOT support:                   yes
+Virtual Machine:                        no
+kwin_platform_x11_standalone: glSwapInterval is unsupported
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+Qt: Session management error: networkIdsList argument is NULL
+_IceTransmkdir: ERROR: euid != 0,directory /tmp/.ICE-unix will not be created.
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+/usr/bin/iceauth:  creating new authority file /home/kasm-user/.ICEauthority
+kf.kio.gui: "Could not find the program '/usr/lib/x86_64-linux-gnu/libexec/baloo_file'"
+Initializing  "/usr/lib/x86_64-linux-gnu/qt5/plugins/plasma/kcms/systemsettings/kcm_touchpad.so"
+kcm_touchpad: Using X11 backend
+qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow), sequence: 889, resource id: 6291461, major code: 18 (ChangeProperty), minor code: 0
+Xlib XKB extension major= 1  minor= 0
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+ 2025-02-20 13:37:08,265 [DEBUG] Selection: Selection owner change for WM_S0
+ 2025-02-20 13:37:08,591 [DEBUG] Selection: Selection owner change for _KDE_RUNNING
+ 2025-02-20 13:37:08,670 [DEBUG] Selection: Selection owner change for _NET_WM_CM_S0
+ 2025-02-20 13:37:08,671 [DEBUG] Selection: Selection owner change for _KDE_STARTUP_FEEDBACK
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+sha256sum: '/home/kasm-user/Desktop/*.desktop': No such file or directory
+gio: Setting attribute metadata::xfce-exe-checksum not supported
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+New PolkitAgentListener  0x5f67e6aade00
+Adding new listener  PolkitQt1::Agent::Listener(0x5f67e6de8350) for  0x5f67e6aade00
+Listener online
+"Cannot create unix session: No session for pid 271"
+
+** (process:271): CRITICAL **: 13:37:08.914: polkit_agent_listener_register_with_options: assertion 'POLKIT_IS_SUBJECT (subject)' failed
+"Cannot register authentication agent!"
+Authentication agent result: false
+Couldn't register listener!
+X server XKB extension major= 1  minor= 0
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+Checking screens: available: (QScreen(0x5c9cabc45e10, name="VNC-0")) redundant: QHash() fake: QSet() all: (QScreen(0x5c9cabc45e10, name="VNC-0"))
+Checking screens: available: (QScreen(0x5c9cabc45e10, name="VNC-0")) redundant: QHash() fake: QSet() all: (QScreen(0x5c9cabc45e10, name="VNC-0"))
+kdeconnect.core: Warning: KDE Connect private key file has too open permissions  "/home/kasm-user/.config/kdeconnect/privateKey.pem"
+kdeconnect.core: Warning: KDE Connect certificate file has too open permissions  "/home/kasm-user/.config/kdeconnect/certificate.pem"
+Aborting shell load: The activity manager daemon (kactivitymanagerd) is not running.
+If this Plasma has been installed into a custom prefix, verify that its D-Bus services dir is known to the system for the daemon to be activatable.
+Aborting shell load: The activity manager daemon (kactivitymanagerd) is not running.
+If this Plasma has been installed into a custom prefix, verify that its D-Bus services dir is known to the system for the daemon to be activatable.
+kf.plasma.quick: Applet preload policy set to 1
+Could not load a session backend. Session management operations such as shutdown will not be operational. This is a setup issue.
+ 2025-02-20 13:37:08,787 [DEBUG] Selection: Selection owner change for _NET_SYSTEM_TRAY_S0
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+kwin_core: XCB error: 150 (BadDamage), sequence: 2001, resource id: 14680092, major code: 142 (DAMAGE), minor code: 3 (Subtract)
+qt.qpa.xcb: QXcbConnection: XCB error: 3 (BadWindow), sequence: 2039, resource id: 4194332, major code: 18 (ChangeProperty), minor code: 0
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+file:///usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/DigitalClock.qml:534:9: QML Label: Binding loop detected for property "height"
+file:///usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/DigitalClock.qml:499:13: QML Label: Binding loop detected for property "height"
+file:///usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/DigitalClock.qml:499:13: QML Label: Binding loop detected for property "height"
+file:///usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/DigitalClock.qml:534:9: QML Label: Binding loop detected for property "height"
+file:///usr/share/plasma/plasmoids/org.kde.plasma.digitalclock/contents/ui/DigitalClock.qml:556:5: QML Label: Binding loop detected for property "height"
+file:///home/kasm-user/.local/share/plasma/plasmoids/P-Connor.PlasmaDrawer/contents/ui/CompactRepresentation.qml:58: TypeError: Cannot read property 'height' of null
+QObject::connect: No such slot DesktopProtocol::_k_slotRedirection(KIO::Job *, QUrl)
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QObject::connect: No such slot DesktopProtocol::_k_slotRedirection(KIO::Job *, QUrl)
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+kf.kio.widgets: Cannot read information about filesystem under path "/home/kasm-user/.cache/thumbnails/"
+kf.solid.backends.udisks2: Failed enumerating UDisks2 objects: "org.freedesktop.DBus.Error.Disconnected" 
+ "Not connected to D-Bus server"
+kf.solid.backends.udisks2: Failed enumerating UDisks2 objects: "org.freedesktop.DBus.Error.Disconnected" 
+ "Not connected to D-Bus server"
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-kasm-user'
+QObject::connect: No such slot DesktopProtocol::_k_slotRedirection(KIO::Job *, QUrl)
+kf.solid.backends.udisks2: Failed enumerating UDisks2 objects: "org.freedesktop.DBus.Error.Disconnected" 
+ "Not connected to D-Bus server"
+kf.solid.backends.udisks2: Failed enumerating UDisks2 objects: "org.freedesktop.DBus.Error.Disconnected" 
+ "Not connected to D-Bus server"
+file:///usr/lib/x86_64-linux-gnu/qt5/qml/org/kde/plasma/extras/PlaceholderMessage.qml:238:5: QML Heading: Binding loop detected for property "verticalAlignment"
+ 2025-02-20 13:37:18,360 [INFO] websocket 4: got client connection from 172.17.0.1
+ 2025-02-20 13:37:18,363 [DEBUG] websocket 4: non-SSL connection disallowed
+ 2025-02-20 13:37:18,363 [DEBUG] websocket 4: No connection after handshake
+ 2025-02-20 13:37:18,363 [DEBUG] websocket 4: handler exit
+ 2025-02-20 13:37:18,369 [INFO] websocket 5: got client connection from 172.17.0.1
+ 2025-02-20 13:37:18,372 [DEBUG] websocket 5: non-SSL connection disallowed
+ 2025-02-20 13:37:18,372 [DEBUG] websocket 5: No connection after handshake
+ 2025-02-20 13:37:18,372 [DEBUG] websocket 5: handler exit
+ 2025-02-20 13:37:18,376 [INFO] websocket 6: got client connection from 172.17.0.1
+ 2025-02-20 13:37:18,379 [DEBUG] websocket 6: non-SSL connection disallowed
+ 2025-02-20 13:37:18,379 [DEBUG] websocket 6: No connection after handshake
+ 2025-02-20 13:37:18,379 [DEBUG] websocket 6: handler exit
+ 2025-02-20 13:37:18,383 [INFO] websocket 7: got client connection from 172.17.0.1
+ 2025-02-20 13:37:18,386 [DEBUG] websocket 7: non-SSL connection disallowed
+ 2025-02-20 13:37:18,386 [DEBUG] websocket 7: No connection after handshake
+ 2025-02-20 13:37:18,386 [DEBUG] websocket 7: handler exit
+kdeconnect.core: Could not query capabilities from notifications server
